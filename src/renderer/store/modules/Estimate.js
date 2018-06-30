@@ -14,6 +14,11 @@ const state = {
     name: 'New estimation',
 
     /**
+     * Unit applied for estimation
+     */
+    unit: 'hours',
+
+    /**
      * List of estimations
      */
     list: [

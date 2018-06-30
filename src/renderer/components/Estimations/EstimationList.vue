@@ -1,22 +1,26 @@
 <template>
     <div class="estimations-list">
 
+
+
+
+
         <!-- Title -->
         <div class="estimation-list--title">
             <!-- None-edit mode title -->
             <h1
-                class="font-italic"
-                v-if="!editTitle"
-                v-on:dblclick="showEditTitle"
+                    class="font-italic"
+                    v-if="!editTitle"
+                    v-on:dblclick="showEditTitle"
             >
                 {{ title }}
 
                 <small>
                     <button
-                        class="btn btn-link"
-                        role="button"
-                        title="Edit title of this estimation"
-                        v-on:click="showEditTitle"
+                            class="btn btn-link"
+                            role="button"
+                            title="Edit title of this estimation"
+                            v-on:click="showEditTitle"
                     >
                         edit
                     </button>
@@ -24,8 +28,8 @@
             </h1>
 
             <div
-                class="estimation-list--tile--form row"
-                v-if="editTitle"
+                    class="estimation-list--tile--form row"
+                    v-if="editTitle"
             >
                 <div class="col">
                     <input
@@ -52,7 +56,9 @@
                 </div>
             </div>
         </div>
+        <!-- End Title -->
 
+        <!-- Actual list -->
         <div class="estimation-list--list">
             <table class="table table-striped table-hover table-responsive-sm">
                 <thead>
@@ -64,7 +70,15 @@
                         <th scope="col" title="PERT Estimate: (O + (4 * M) + P) / 6">Estimate</th>
                         <th scope="col" title="Standard Deviation (Sigma): (P - O) / 6">SD (&sigma;)</th>
                         <th scope="col" title="Variance: (sigma)^2">Variance</th>
-                        <th scope="col"></th>
+                        <th scope="col">
+                            <div class="estimation-list--unit font-weight-normal">
+                                <span class="estimation-list--unit--label text-secondary">
+                                    ( In:
+
+                                    <span class="estimation-list--unit--value text-secondary"> {{ unit }} </span> )
+                                </span>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,6 +101,7 @@
                 </tfoot>
             </table>
         </div>
+        <!-- List End -->
 
         <!-- Add new Estimation Item -->
         <div class="estimation-list--new-task-form">
@@ -194,6 +209,7 @@
                 </div>
             </form>
         </div>
+        <!-- End Add new Estimation Item -->
 
         <!-- Estimation Results -->
         <div class="estimation-list--results">
@@ -235,6 +251,7 @@
                 </tbody>
             </table>
         </div>
+        <!-- End Estimation Results -->
     </div>
 </template>
 
@@ -299,6 +316,12 @@
                 },
                 set (value) {
                     this.$store.commit(EDIT_ESTIMATION_TITLE, value)
+                }
+            },
+
+            unit: {
+                get () {
+                    return this.$store.state.Estimate.unit
                 }
             }
         },

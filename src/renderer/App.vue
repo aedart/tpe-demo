@@ -1,7 +1,23 @@
 <template>
   <div id="app" class="container">
+
+    <!-- Print -->
+    <div class="row justify-content-end">
+      <div class="col-auto">
+          <button
+                  class="btn btn-link"
+                  title="Print this estimate"
+                  v-on:click="printEstimate"
+          >
+            Print
+          </button>
+      </div>
+    </div>
+
+    <!-- Pages -->
     <router-view></router-view>
 
+    <!-- App. title and author -->
     <nav class="navbar navbar-light bg-light justify-content-end">
       <span class="navbar-text font-italic">
         PERT Three Point Estimation Demo, By Alin Eugen Deac
@@ -12,7 +28,12 @@
 
 <script>
   export default {
-      name: 'tpe'
+      name: 'tpe',
+      methods: {
+          printEstimate () {
+              print()
+          }
+      }
   }
 </script>
 
@@ -20,6 +41,16 @@
   /* CSS */
   @import "~bootstrap/dist/css/bootstrap.min.css";
   .estimations-list {
-    margin-top: 3rem;
+    margin-top: 0.1rem;
+  }
+
+  @media print {
+    button {
+      display: none !important;
+    }
+
+    .estimation-list--new-task-form {
+      display: none;
+    }
   }
 </style>

@@ -1,9 +1,11 @@
 <template>
     <div class="estimations-list">
 
-
-
-
+        <div class="row justify-content-end">
+            <div class="col-2 estimation-list--date text-secondary">
+                {{ currentDateAndTime }}
+            </div>
+        </div>
 
         <!-- Title -->
         <div class="estimation-list--title">
@@ -226,6 +228,8 @@
             >
                 You should have at least 15 tasks before PERT estimation has value...
             </div>
+
+
             <table class="table table-striped table-responsive-sm">
                 <thead>
                 <tr>
@@ -323,6 +327,13 @@
                 get () {
                     return this.$store.state.Estimate.unit
                 }
+            },
+
+            // -------------------------------------------- //
+
+            currentDateAndTime () {
+                let date = new Date()
+                return date.toLocaleDateString() + ', ' + date.toLocaleTimeString()
             }
         },
         methods: {

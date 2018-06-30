@@ -43,10 +43,17 @@
   .estimations-list {
     margin-top: 0.1rem;
   }
+  .estimation-list--date {
+    text-align: right;
+  }
 
   @media print {
     button {
       display: none !important;
+    }
+
+    .alert {
+      display: none;
     }
 
     .estimation-list--new-task-form {
